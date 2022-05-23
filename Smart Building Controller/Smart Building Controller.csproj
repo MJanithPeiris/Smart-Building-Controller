@@ -65,6 +65,10 @@
     <Compile Include="IDoorManager.designer.cs">
       <DependentUpon>IDoorManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="IEmailService.cs" />
+    <Compile Include="IEmailService.designer.cs">
+      <DependentUpon>IEmailService.cs</DependentUpon>
+    </Compile>
     <Compile Include="IFireAlarmManager.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,7 +81,9 @@
     <Compile Include="ILightManager.designer.cs">
       <DependentUpon>ILightManager.cs</DependentUpon>
     </Compile>
-    <Compile Include="IWebService.cs" />
+    <Compile Include="IWebService.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="IWebService.designer.cs">
       <DependentUpon>IWebService.cs</DependentUpon>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="IDoorManager.resx">
       <DependentUpon>IDoorManager.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IEmailService.resx">
+      <DependentUpon>IEmailService.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IFireAlarmManager.resx">
       <DependentUpon>IFireAlarmManager.cs</DependentUpon>

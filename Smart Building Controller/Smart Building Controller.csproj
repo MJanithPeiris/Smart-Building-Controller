@@ -59,7 +59,13 @@
     <Compile Include="BuildingController.Designer.cs">
       <DependentUpon>BuildingController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ILightManager.cs" />
+    <Compile Include="IDoorManager.cs" />
+    <Compile Include="IDoorManager.designer.cs">
+      <DependentUpon>IDoorManager.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ILightManager.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="ILightManager.designer.cs">
       <DependentUpon>ILightManager.cs</DependentUpon>
     </Compile>
@@ -79,6 +85,9 @@
     </Compile>
     <EmbeddedResource Include="BuildingController.resx">
       <DependentUpon>BuildingController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IDoorManager.resx">
+      <DependentUpon>IDoorManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ILightManager.resx">
       <DependentUpon>ILightManager.cs</DependentUpon>

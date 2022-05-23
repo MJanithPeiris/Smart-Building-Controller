@@ -17,3 +17,9 @@ D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Cont
 D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.csproj.CoreCompileInputs.cache
 D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.exe
 D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.pdb
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.IDoorManager.resources
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.IEmailService.resources
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.IFireAlarmManager.resources
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.ILightManager.resources
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.IWebService.resources
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart_Building_Controller.Manager.resources

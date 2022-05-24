@@ -45,5 +45,10 @@ namespace Smart_Building_Controller
             }
             progress += 1;
         }
+
+        private void progressBar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace Smart_Building_Controller
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +63,18 @@ namespace Smart_Building_Controller
             this.progressBar.Size = new System.Drawing.Size(730, 35);
             this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar.TabIndex = 1;
+            this.progressBar.Click += new System.EventHandler(this.progressBar_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(80)))), ((int)(((byte)(107)))));
+            this.label1.Font = new System.Drawing.Font("Britannic Bold", 25.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(112, 342);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(521, 48);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Smart Building Controller";
             // 
             // SplashScreen
             // 
@@ -69,6 +82,7 @@ namespace Smart_Building_Controller
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(750, 510);
             this.ControlBox = false;
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.progressBar);
             this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -79,6 +93,7 @@ namespace Smart_Building_Controller
             this.Load += new System.EventHandler(this.SplashScreen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -87,6 +102,7 @@ namespace Smart_Building_Controller
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.ProgressBar progressBar;
+        private System.Windows.Forms.Label label1;
     }
 }
 

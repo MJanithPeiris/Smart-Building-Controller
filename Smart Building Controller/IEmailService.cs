@@ -18,7 +18,7 @@ namespace Smart_Building_Controller
         }
 
 
-        public void sendMail(string emailAddress, string subject, string message)
+        public void SendMail(string emailAddress, string subject, string message)
         {
 
         }

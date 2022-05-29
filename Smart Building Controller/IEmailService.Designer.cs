@@ -29,6 +29,7 @@ namespace Smart_Building_Controller
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IEmailService));
             this.background_panel = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
@@ -44,7 +45,7 @@ namespace Smart_Building_Controller
             // background_panel
             // 
             this.background_panel.BackColor = System.Drawing.Color.Black;
-            this.background_panel.BorderColor = System.Drawing.Color.White;
+            this.background_panel.BorderColor = System.Drawing.Color.Black;
             this.background_panel.Controls.Add(this.textBox2);
             this.background_panel.Controls.Add(this.textBox3);
             this.background_panel.Controls.Add(this.input_to);
@@ -52,47 +53,52 @@ namespace Smart_Building_Controller
             this.background_panel.Controls.Add(this.label_email_subject);
             this.background_panel.Controls.Add(this.label_email_to);
             this.background_panel.ForeColor = System.Drawing.Color.Black;
-            this.background_panel.Location = new System.Drawing.Point(137, 78);
+            this.background_panel.Location = new System.Drawing.Point(112, 70);
+            this.background_panel.Margin = new System.Windows.Forms.Padding(2);
             this.background_panel.Name = "background_panel";
-            this.background_panel.Radius = 30;
-            this.background_panel.Size = new System.Drawing.Size(866, 570);
+            this.background_panel.Radius = 20;
+            this.background_panel.Size = new System.Drawing.Size(650, 463);
             this.background_panel.TabIndex = 6;
             this.background_panel.Thickness = 5F;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox2.Location = new System.Drawing.Point(177, 111);
+            this.textBox2.Location = new System.Drawing.Point(111, 90);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(649, 59);
+            this.textBox2.Size = new System.Drawing.Size(510, 35);
             this.textBox2.TabIndex = 7;
             // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.textBox3.Location = new System.Drawing.Point(30, 228);
+            this.textBox3.Location = new System.Drawing.Point(22, 185);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(800, 316);
+            this.textBox3.Size = new System.Drawing.Size(601, 258);
             this.textBox3.TabIndex = 6;
             // 
             // input_to
             // 
             this.input_to.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.input_to.Location = new System.Drawing.Point(104, 37);
+            this.input_to.Location = new System.Drawing.Point(76, 25);
+            this.input_to.Margin = new System.Windows.Forms.Padding(2);
             this.input_to.Multiline = true;
             this.input_to.Name = "input_to";
-            this.input_to.Size = new System.Drawing.Size(722, 53);
+            this.input_to.Size = new System.Drawing.Size(545, 35);
             this.input_to.TabIndex = 4;
             // 
             // label_email_message
             // 
             this.label_email_message.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email_message.ForeColor = System.Drawing.Color.White;
-            this.label_email_message.Location = new System.Drawing.Point(25, 194);
+            this.label_email_message.Location = new System.Drawing.Point(19, 157);
+            this.label_email_message.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_email_message.Name = "label_email_message";
-            this.label_email_message.Size = new System.Drawing.Size(132, 40);
+            this.label_email_message.Size = new System.Drawing.Size(99, 32);
             this.label_email_message.TabIndex = 3;
             this.label_email_message.Text = "MESSAGE";
             // 
@@ -100,9 +106,10 @@ namespace Smart_Building_Controller
             // 
             this.label_email_subject.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email_subject.ForeColor = System.Drawing.Color.White;
-            this.label_email_subject.Location = new System.Drawing.Point(25, 121);
+            this.label_email_subject.Location = new System.Drawing.Point(19, 98);
+            this.label_email_subject.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_email_subject.Name = "label_email_subject";
-            this.label_email_subject.Size = new System.Drawing.Size(118, 40);
+            this.label_email_subject.Size = new System.Drawing.Size(88, 32);
             this.label_email_subject.TabIndex = 2;
             this.label_email_subject.Text = "SUBJECT";
             // 
@@ -110,44 +117,53 @@ namespace Smart_Building_Controller
             // 
             this.label_email_to.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label_email_to.ForeColor = System.Drawing.Color.White;
-            this.label_email_to.Location = new System.Drawing.Point(34, 35);
+            this.label_email_to.Location = new System.Drawing.Point(20, 33);
+            this.label_email_to.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_email_to.Name = "label_email_to";
-            this.label_email_to.Size = new System.Drawing.Size(38, 40);
+            this.label_email_to.Size = new System.Drawing.Size(32, 23);
             this.label_email_to.TabIndex = 1;
             this.label_email_to.Text = "TO";
             // 
             // lable_title
             // 
-            this.lable_title.Font = new System.Drawing.Font("Segoe UI", 22.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lable_title.Location = new System.Drawing.Point(12, 13);
+            this.lable_title.AutoSize = true;
+            this.lable_title.BackColor = System.Drawing.Color.Transparent;
+            this.lable_title.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lable_title.Location = new System.Drawing.Point(33, 19);
+            this.lable_title.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lable_title.Name = "lable_title";
-            this.lable_title.Size = new System.Drawing.Size(562, 60);
+            this.lable_title.Size = new System.Drawing.Size(250, 45);
             this.lable_title.TabIndex = 7;
-            this.lable_title.Text = "MAIL SERVICE";
+            this.lable_title.Text = "EMAIL SERVICE";
             // 
             // btn_send
             // 
             this.btn_send.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_send.Location = new System.Drawing.Point(1009, 615);
+            this.btn_send.Location = new System.Drawing.Point(768, 512);
+            this.btn_send.Margin = new System.Windows.Forms.Padding(2);
             this.btn_send.Name = "btn_send";
-            this.btn_send.Size = new System.Drawing.Size(134, 60);
+            this.btn_send.Size = new System.Drawing.Size(93, 39);
             this.btn_send.TabIndex = 8;
             this.btn_send.Text = "SEND";
             this.btn_send.UseVisualStyleBackColor = true;
             // 
             // IEmailService
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 703);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(872, 571);
             this.Controls.Add(this.btn_send);
             this.Controls.Add(this.lable_title);
             this.Controls.Add(this.background_panel);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "IEmailService";
             this.Text = "IEmailService";
             this.background_panel.ResumeLayout(false);
             this.background_panel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 

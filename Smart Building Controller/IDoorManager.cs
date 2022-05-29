@@ -18,31 +18,31 @@ namespace Smart_Building_Controller
             InitializeComponent();
         }
 
-        public bool openDoor(int doorID)
+        public bool OpenDoor(int doorID)
         {
             return doors[doorID];
         }
 
-        public bool lockDoor(int doorID)
+        public bool LockDoor(int doorID)
         {
             return doors[doorID];
         }
 
-        public bool openAllDoors()
+        public bool OpenAllDoors()
         {
-            for (int i = 0; i < doors.Length; i++)
-            {
-                //doors[i] = true;
-                if (!doors[i])
-                {
-                    return false;
-                }
-            }
+            // for (int i = 0; i < doors.Length; i++)
+            // {
+            //     //doors[i] = true;
+            //     if (!doors[i])
+            //     {
+            //         return false;
+            //     }
+            // }
 
             return true;
         }
 
-        public bool lockAllDoors()
+        public bool LockAllDoors()
         {
             for (int i = 0; i < doors.Length; i++)
             {
@@ -56,9 +56,9 @@ namespace Smart_Building_Controller
             return true;
         }
 
-        public string getStatus()
+        public string GetStatus()
         {
-            return "";
+            return "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,";
         }
 
     }

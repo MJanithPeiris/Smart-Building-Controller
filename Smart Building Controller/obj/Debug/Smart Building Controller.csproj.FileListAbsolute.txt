@@ -93,3 +93,12 @@ D:\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building 
 D:\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.csproj.CoreCompileInputs.cache
 D:\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.exe
 D:\Smart-Building-Controller\Smart Building Controller\obj\Debug\Smart Building Controller.pdb
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\Castle.Core.dll
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\NSubstitute.dll
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\nunit.framework.dll
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\Castle.Core.xml
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\NSubstitute.xml
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\nunit.framework.xml
+D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\System.Threading.Tasks.Extensions.xml

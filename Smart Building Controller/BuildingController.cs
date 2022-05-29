@@ -14,7 +14,7 @@ namespace Smart_Building_Controller
     {
         private string buildingID;
         private string currentState;
-        private string previousState;
+        private string historyState;
         private IDoorManager doorManger = new IDoorManager();
         private ILightManager lightManager = new ILightManager();
         private IFireAlarmManager fireAlarmManager = new IFireAlarmManager();
@@ -27,52 +27,61 @@ namespace Smart_Building_Controller
             InitializeComponent();
         }
 
-        public BuildingController(string id)
+        public BuildingController(string id) // overloaded constructor with single string parameter
         {
             buildingID = id.ToLower();
             currentState = "out of hours";
             InitializeComponent();
         }
 
-        public BuildingController(string id, string startState)
+        public BuildingController(string id, string startState) // overloaded constructor with 2 string parameter
         {
             if (startState.ToLower() == "open" || startState.ToLower() == "closed" || startState.ToLower() == "out of hours")
             {
+                // convert to lower case and assign the values
                 buildingID = id.ToLower();
                 currentState = startState.ToLower();
-                InitializeComponent();
             }
             else
             {
+                // exception message
                 throw new ArgumentException("Argument Exception: BuildingController can only be initialised to the following states 'open', 'closed', 'out of hours'");
             }
+            InitializeComponent();
         }
 
         public BuildingController(string id, ILightManager iLightManager, IFireAlarmManager iFireAlarmManager,
             IDoorManager iDoorManager, IWebService iWebService, IEmailService iEmailService)
         {
-            buildingID = id;
+            buildingID = id.ToLower();
+            currentState = "out of hours";
             lightManager = iLightManager;
             fireAlarmManager = iFireAlarmManager;
             doorManger = iDoorManager;
             webService = iWebService;
             emailService = iEmailService;
+            InitializeComponent();
         }
 
-        public string getCurrentState()
+        public string GetCurrentState() // returns the current state of the building controller
         {
             return currentState;
         }
 
-        public bool setCurrentState(string state)
+        public bool SetCurrentState(string state) // set the status of the building controller
         {
             switch (state.ToLower())
             {
                 case "open":
-                    if ((currentState == "out of hours" || currentState == "open") && doorManger.openAllDoors())
+                    // set the new state according to the current state 
+                    if ((currentState == "out of hours" || currentState == "open") && doorManger.OpenAllDoors())
                     {
                         currentState = state.ToLower();
-
+                    }
+                    // go to the history state if the current state is fire alarm or fire drill
+                    else if (currentState == "fire alarm" || currentState == "fire drill")
+                    {
+                        currentState = historyState;
                     }
                     else
                     {
@@ -81,9 +90,15 @@ namespace Smart_Building_Controller
                     break;
 
                 case "out of hours":
+                    // set the new state according to the current state 
                     if (currentState == "open" || currentState == "closed" || currentState == "out of hours")
                     {
                         currentState = state.ToLower();
+                    }
+                    // go to the history state if the current state is fire alarm or fire drill
+                    else if (currentState == "fire alarm" || currentState == "fire drill")
+                    {
+                        currentState = historyState;
                     }
                     else
                     {
@@ -92,11 +107,17 @@ namespace Smart_Building_Controller
                     break;
 
                 case "closed":
+                    // set the new state according to the current state 
                     if (currentState == "out of hours" || currentState == "closed")
                     {
                         currentState = state.ToLower();
-                        doorManger.lockAllDoors();
-                        lightManager.setAllLights(false);
+                        doorManger.LockAllDoors();
+                        lightManager.SetAllLights(false);
+                    }
+                    // go to the history state if the current state is fire alarm or fire drill
+                    else if (currentState == "fire alarm" || currentState == "fire drill")
+                    {
+                        currentState = historyState;
                     }
                     else
                     {
@@ -105,17 +126,39 @@ namespace Smart_Building_Controller
                     break;
 
                 case "fire drill":
-                    previousState = currentState;
-                    currentState = state.ToLower();
+                    if (currentState != "fire alarm")
+                    {
+                        historyState = currentState; // save the current state to history state
+                        currentState = state.ToLower();
+                    }
+                    else
+                    {
+                        return false;
+                    }
                     break;
 
                 case "fire alarm":
-                    previousState = currentState;
-                    currentState = state.ToLower();
-                    fireAlarmManager.setAlarm(true);
-                    doorManger.openAllDoors();
-                    lightManager.setAllLights(true);
-                    webService.logFireAlarm("fire alarm");
+                    if (currentState != "fire drill")
+                    {
+                        historyState = currentState; // save the current state to history state
+                        currentState = state.ToLower();
+                        fireAlarmManager.SetAlarm(true);
+                        doorManger.OpenAllDoors();
+                        lightManager.SetAllLights(true);
+                        try
+                        {
+                            webService.LogFireAlarm("fire alarm");
+                        }
+                        catch (Exception ex)
+                        {
+                            // send the email
+                            emailService.SendMail("smartbuilding@uclan.ac.uk", "failed to log alarm", ex.ToString());
+                        }
+                    }
+                    else
+                    {
+                        return false;
+                    }
                     break;
 
                 default:
@@ -125,37 +168,58 @@ namespace Smart_Building_Controller
             return true;
         }
 
-        public string getBuildingID()
+        public string GetBuildingID() // return the building id
         {
             return buildingID;
         }
 
-        public void setBuildingID(string id)
+        public void SetBuildingID(string id) // set the building id
         {
-            buildingID = id.ToLower();
+            buildingID = id.ToLower(); // convert to lowercase
         }
 
-        public string getStatusReport()
+        public string GetStatusReport() // get the full status about all classes
         {
-            string status = lightManager.getStatus() + "," + doorManger.getStatus() + "," + fireAlarmManager.getStatus();
+            string logString = "";
+            // if a fault is in the status, then it will assign the name of the object to log string
+            if (HaveFault(lightManager.GetStatus()))
+            {
+                logString += "Lights,";
+            }
+
+            if (HaveFault(doorManger.GetStatus()))
+            {
+                logString += "Doors,";
+            }
+
+            if (HaveFault(fireAlarmManager.GetStatus()))
+            {
+                logString += "FireAlarm,";
+            }
+
+            if (logString != "")
+            {
+                webService.LogEngineerRequired(logString);
+            }
+
+            // create a one string for all status
+            string status = lightManager.GetStatus() + doorManger.GetStatus() + fireAlarmManager.GetStatus();
 
             return status;
         }
 
-
-        public bool checkFaluts(string status)
+        public bool HaveFault(string status) // check whether the status contains fault
         {
             string[] statusList = status.Split(',');
 
             for (int i = 1; i < statusList.Length; i++)
             {
-                if (statusList[i].ToUpper() == "FAULT")
+                if (statusList[i].ToUpper() == "FAULT") // check the fault is there
                 {
-                    return false;
+                    return true;
                 }
             }
-
-            return true;
+            return false;
         }
 
         private void BuildingController_Load(object sender, EventArgs e)
@@ -193,14 +257,14 @@ namespace Smart_Building_Controller
             if (currentState == "out of hours" && btn_power.BackgroundColor == Color.Brown)
             {
                 btn_power.BackgroundColor = Color.ForestGreen;
-                setCurrentState("open");
+                SetCurrentState("open");
                 lbl_out_of_hours.Text = "Out of Hours\nOFF";
                 tgbtn_out_of_hours.Checked = false;
             }
             else if (currentState == "out of hours" && btn_power.BackgroundColor == Color.ForestGreen)
             {
                 btn_power.BackgroundColor = Color.Brown;
-                setCurrentState("closed");
+                SetCurrentState("closed");
                 lbl_out_of_hours.Text = "Out of Hours\nOFF";
                 tgbtn_out_of_hours.Checked = false;
             }
@@ -213,7 +277,7 @@ namespace Smart_Building_Controller
             if (tgbtn_out_of_hours.Checked == true && (currentState == "open" || currentState == "closed"))
             {
                 lbl_out_of_hours.Text = "Out of Hours\nON";
-                setCurrentState("out of hours");
+                SetCurrentState("out of hours");
                 
             }
 

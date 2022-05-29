@@ -18,14 +18,14 @@ namespace Smart_Building_Controller
             InitializeComponent();
         }
 
-        public void setAlarm(bool isActive)
+        public void SetAlarm(bool isActive)
         {
             isFireAlarmOn = isActive;
         }
 
-        public string getStatus()
+        public string GetStatus()
         {
-            return "";
+            return "FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,";
         }
 
     }

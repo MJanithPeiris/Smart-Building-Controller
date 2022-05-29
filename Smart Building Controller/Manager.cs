@@ -24,9 +24,9 @@ namespace Smart_Building_Controller
             return "";
         }
 
-        public void setEngineerRequired(bool needsEngineer)
-        {
-            engineerRequired = needsEngineer;
-        }
+        // public void setEngineerRequired(bool needsEngineer)
+        // {
+        //     engineerRequired = needsEngineer;
+        // }
     }
 }

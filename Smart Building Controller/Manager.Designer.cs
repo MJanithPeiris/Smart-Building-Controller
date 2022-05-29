@@ -29,7 +29,7 @@ namespace Smart_Building_Controller
         /// </summary>
         private void InitializeComponent()
         {
-            this.roundEdgePanel1 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel1 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.lbl_required_engineer = new System.Windows.Forms.Label();
             this.roundEdgePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -76,7 +76,7 @@ namespace Smart_Building_Controller
 
         #endregion
 
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel1;
-        private System.Windows.Forms.Label lbl_required_engineer;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel1;
+        protected System.Windows.Forms.Label lbl_required_engineer;
     }
 }

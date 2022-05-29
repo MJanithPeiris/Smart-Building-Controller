@@ -32,16 +32,16 @@ namespace Smart_Building_Controller
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildingController));
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.roundEdgePanel3 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel3 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.lbl_controllers = new System.Windows.Forms.Label();
             this.btn_fire_alarm_controller = new System.Windows.Forms.Button();
             this.btn_light_controller = new System.Windows.Forms.Button();
             this.btn_door_controller = new System.Windows.Forms.Button();
-            this.roundEdgePanel2 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel2 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
+            this.btn_power = new Smart_Building_Controller.New_Created_Tools.RoundButton();
             this.lbl_out_of_hours = new System.Windows.Forms.Label();
             this.tgbtn_out_of_hours = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
-            this.btn_power = new Smart_Building_Controller.New_Created_Tools.RoundButton();
-            this.roundEdgePanel1 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel1 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.btn_web_service = new System.Windows.Forms.Button();
             this.btn_email_service = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
@@ -64,9 +64,9 @@ namespace Smart_Building_Controller
             this.label1.Font = new System.Drawing.Font("Britannic Bold", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.label1.Location = new System.Drawing.Point(0, 0);
+            this.label1.Location = new System.Drawing.Point(-7, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(363, 48);
+            this.label1.Size = new System.Drawing.Size(369, 60);
             this.label1.TabIndex = 7;
             this.label1.Text = "NOTIFICATION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -93,7 +93,7 @@ namespace Smart_Building_Controller
             this.lbl_controllers.ForeColor = System.Drawing.Color.White;
             this.lbl_controllers.Location = new System.Drawing.Point(261, 12);
             this.lbl_controllers.Name = "lbl_controllers";
-            this.lbl_controllers.Size = new System.Drawing.Size(300, 48);
+            this.lbl_controllers.Size = new System.Drawing.Size(295, 48);
             this.lbl_controllers.TabIndex = 6;
             this.lbl_controllers.Text = "CONTROLLERS";
             // 
@@ -106,6 +106,7 @@ namespace Smart_Building_Controller
             this.btn_fire_alarm_controller.TabIndex = 5;
             this.btn_fire_alarm_controller.Text = "FIRE ALARM CONTROLLER";
             this.btn_fire_alarm_controller.UseVisualStyleBackColor = true;
+            this.btn_fire_alarm_controller.Click += new System.EventHandler(this.btn_fire_alarm_controller_Click);
             // 
             // btn_light_controller
             // 
@@ -116,6 +117,7 @@ namespace Smart_Building_Controller
             this.btn_light_controller.TabIndex = 4;
             this.btn_light_controller.Text = "LIGHT CONTROLLER";
             this.btn_light_controller.UseVisualStyleBackColor = true;
+            this.btn_light_controller.Click += new System.EventHandler(this.btn_light_controller_Click);
             // 
             // btn_door_controller
             // 
@@ -126,20 +128,41 @@ namespace Smart_Building_Controller
             this.btn_door_controller.TabIndex = 3;
             this.btn_door_controller.Text = "DOOR CONTROLLER";
             this.btn_door_controller.UseVisualStyleBackColor = true;
+            this.btn_door_controller.Click += new System.EventHandler(this.btn_door_controller_Click);
             // 
             // roundEdgePanel2
             // 
             this.roundEdgePanel2.BackColor = System.Drawing.Color.Black;
             this.roundEdgePanel2.BorderColor = System.Drawing.Color.White;
+            this.roundEdgePanel2.Controls.Add(this.btn_power);
             this.roundEdgePanel2.Controls.Add(this.lbl_out_of_hours);
             this.roundEdgePanel2.Controls.Add(this.tgbtn_out_of_hours);
-            this.roundEdgePanel2.Controls.Add(this.btn_power);
             this.roundEdgePanel2.Location = new System.Drawing.Point(862, 1);
             this.roundEdgePanel2.Name = "roundEdgePanel2";
             this.roundEdgePanel2.Radius = 20;
-            this.roundEdgePanel2.Size = new System.Drawing.Size(300, 80);
+            this.roundEdgePanel2.Size = new System.Drawing.Size(299, 90);
             this.roundEdgePanel2.TabIndex = 3;
             this.roundEdgePanel2.Thickness = 5F;
+            // 
+            // btn_power
+            // 
+            this.btn_power.BackColor = System.Drawing.Color.Brown;
+            this.btn_power.BackgroundColor = System.Drawing.Color.Brown;
+            this.btn_power.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_power.BackgroundImage")));
+            this.btn_power.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btn_power.BorderColor = System.Drawing.Color.White;
+            this.btn_power.BorderRadius = 24;
+            this.btn_power.BorderSize = 1;
+            this.btn_power.FlatAppearance.BorderSize = 0;
+            this.btn_power.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_power.ForeColor = System.Drawing.Color.White;
+            this.btn_power.Location = new System.Drawing.Point(211, 12);
+            this.btn_power.Name = "btn_power";
+            this.btn_power.Size = new System.Drawing.Size(64, 62);
+            this.btn_power.TabIndex = 5;
+            this.btn_power.TextColor = System.Drawing.Color.White;
+            this.btn_power.UseVisualStyleBackColor = false;
+            this.btn_power.Click += new System.EventHandler(this.btn_power_Click);
             // 
             // lbl_out_of_hours
             // 
@@ -147,7 +170,7 @@ namespace Smart_Building_Controller
             this.lbl_out_of_hours.BackColor = System.Drawing.Color.Transparent;
             this.lbl_out_of_hours.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_out_of_hours.ForeColor = System.Drawing.Color.White;
-            this.lbl_out_of_hours.Location = new System.Drawing.Point(23, 23);
+            this.lbl_out_of_hours.Location = new System.Drawing.Point(23, 26);
             this.lbl_out_of_hours.Name = "lbl_out_of_hours";
             this.lbl_out_of_hours.Size = new System.Drawing.Size(95, 38);
             this.lbl_out_of_hours.TabIndex = 2;
@@ -157,7 +180,7 @@ namespace Smart_Building_Controller
             // tgbtn_out_of_hours
             // 
             this.tgbtn_out_of_hours.AutoSize = true;
-            this.tgbtn_out_of_hours.Location = new System.Drawing.Point(126, 26);
+            this.tgbtn_out_of_hours.Location = new System.Drawing.Point(126, 29);
             this.tgbtn_out_of_hours.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_out_of_hours.Name = "tgbtn_out_of_hours";
             this.tgbtn_out_of_hours.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
@@ -167,25 +190,7 @@ namespace Smart_Building_Controller
             this.tgbtn_out_of_hours.Size = new System.Drawing.Size(60, 30);
             this.tgbtn_out_of_hours.TabIndex = 1;
             this.tgbtn_out_of_hours.UseVisualStyleBackColor = true;
-            // 
-            // btn_power
-            // 
-            this.btn_power.BackColor = System.Drawing.Color.Brown;
-            this.btn_power.BackgroundColor = System.Drawing.Color.Brown;
-            this.btn_power.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_power.BackgroundImage")));
-            this.btn_power.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btn_power.BorderColor = System.Drawing.Color.White;
-            this.btn_power.BorderRadius = 25;
-            this.btn_power.BorderSize = 1;
-            this.btn_power.FlatAppearance.BorderSize = 0;
-            this.btn_power.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_power.ForeColor = System.Drawing.Color.White;
-            this.btn_power.Location = new System.Drawing.Point(225, 14);
-            this.btn_power.Name = "btn_power";
-            this.btn_power.Size = new System.Drawing.Size(50, 50);
-            this.btn_power.TabIndex = 0;
-            this.btn_power.TextColor = System.Drawing.Color.White;
-            this.btn_power.UseVisualStyleBackColor = false;
+            this.tgbtn_out_of_hours.CheckedChanged += new System.EventHandler(this.tgbtn_out_of_hours_CheckedChanged);
             // 
             // roundEdgePanel1
             // 
@@ -209,6 +214,7 @@ namespace Smart_Building_Controller
             this.btn_web_service.TabIndex = 2;
             this.btn_web_service.Text = "WEB SERVICE";
             this.btn_web_service.UseVisualStyleBackColor = true;
+            this.btn_web_service.Click += new System.EventHandler(this.btn_web_service_Click);
             // 
             // btn_email_service
             // 
@@ -224,6 +230,8 @@ namespace Smart_Building_Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1162, 703);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.roundEdgePanel3);
@@ -231,6 +239,7 @@ namespace Smart_Building_Controller
             this.Controls.Add(this.roundEdgePanel1);
             this.Name = "BuildingController";
             this.Text = "Building Controller";
+            this.Load += new System.EventHandler(this.BuildingController_Load);
             this.panel1.ResumeLayout(false);
             this.roundEdgePanel3.ResumeLayout(false);
             this.roundEdgePanel3.PerformLayout();
@@ -243,20 +252,20 @@ namespace Smart_Building_Controller
 
         #endregion
 
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel1;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel1;
         private System.Windows.Forms.Button btn_web_service;
         private System.Windows.Forms.Button btn_email_service;
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel2;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel2;
         private System.Windows.Forms.Label lbl_out_of_hours;
         private New_Created_Tools.ToggleButton tgbtn_out_of_hours;
-        private New_Created_Tools.RoundButton btn_power;
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel3;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel3;
         private System.Windows.Forms.Button btn_fire_alarm_controller;
         private System.Windows.Forms.Button btn_light_controller;
         private System.Windows.Forms.Button btn_door_controller;
         private System.Windows.Forms.Label lbl_controllers;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
+        private New_Created_Tools.RoundButton btn_power;
     }
 }
 

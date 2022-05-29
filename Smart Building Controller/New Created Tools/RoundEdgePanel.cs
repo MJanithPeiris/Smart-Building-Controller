@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Drawing.Drawing2D;
 using System.ComponentModel;
 
-namespace Test_for_tdd.NewControls
+namespace Smart_Building_Controller.New_Created_Tools
 {
     public class RoundEdgePanel : Panel
     {

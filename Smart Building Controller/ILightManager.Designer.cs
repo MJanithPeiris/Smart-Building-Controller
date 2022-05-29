@@ -29,11 +29,11 @@ namespace Smart_Building_Controller
         /// </summary>
         private void InitializeComponent()
         {
-            this.roundEdgePanel3 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel3 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.label11 = new System.Windows.Forms.Label();
             this.tgbtn_all_lights = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label12 = new System.Windows.Forms.Label();
-            this.roundEdgePanel2 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel2 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.tgbtn_light_10 = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label13 = new System.Windows.Forms.Label();
             this.tgbtn_light_9 = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
@@ -414,11 +414,11 @@ namespace Smart_Building_Controller
 
         #endregion
 
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel3;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel3;
         private System.Windows.Forms.Label label11;
         private New_Created_Tools.ToggleButton tgbtn_all_lights;
         private System.Windows.Forms.Label label12;
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel2;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel2;
         private New_Created_Tools.ToggleButton tgbtn_light_10;
         private System.Windows.Forms.Label label13;
         private New_Created_Tools.ToggleButton tgbtn_light_9;

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Smart_Building_Controller
 {
-    public partial class IFireAlarmManager : Form
+    public partial class IFireAlarmManager : Manager
     {
         private bool isFireAlarmOn;
         public IFireAlarmManager()
@@ -27,6 +27,6 @@ namespace Smart_Building_Controller
         {
             return "";
         }
-        
+
     }
 }

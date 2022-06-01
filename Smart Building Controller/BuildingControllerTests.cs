@@ -24,7 +24,7 @@ namespace Smart_Building_Controller
     
         public override bool OpenAllDoors()
         {
-            return false;
+            return true;
         }
     
         public bool LockAllDoors()

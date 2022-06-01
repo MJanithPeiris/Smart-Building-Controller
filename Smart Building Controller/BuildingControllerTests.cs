@@ -10,11 +10,11 @@ using NSubstitute.ExceptionExtensions;
 
 namespace Smart_Building_Controller
 {
-    public class IDoorManagerStub : Manager
+    public class IDoorManagerStub : IDoorManager
     {
         public bool OpenDoor(int doorID)
         {
-            return true;
+            return false;
         }
     
         public bool LockDoor(int doorID)
@@ -22,9 +22,9 @@ namespace Smart_Building_Controller
             return true;
         }
     
-        public bool OpenAllDoors()
+        public override bool OpenAllDoors()
         {
-            return true;
+            return false;
         }
     
         public bool LockAllDoors()
@@ -44,7 +44,7 @@ namespace Smart_Building_Controller
     
     }
     
-    public class ILightManagerStub : Manager
+    public class ILightManagerStub : ILightManager
     {
         public void SetLight(bool isOn, int lightID)
         {
@@ -68,7 +68,7 @@ namespace Smart_Building_Controller
     
     }
     
-    public class IFireAlarmManagerStub : Manager
+    public class IFireAlarmManagerStub : IFireAlarmManager
     {
         public void SetAlarm(bool isActive)
         {
@@ -116,7 +116,9 @@ namespace Smart_Building_Controller
     [TestFixture]
     class BuildingControllerTests
     {
-        
+        // Level 01 Requirement
+
+        // test GetBuildingID() method returns the same building id that set using Single Parameter Constructor
         [TestCase("b0010")] // 01
         [TestCase("b0020")] // 02
         public void BuildingControllerSingleParameterConstructor_GetBuildingId_ReturnsSameBuildingID(string buildingId)
@@ -131,22 +133,74 @@ namespace Smart_Building_Controller
             Assert.AreEqual(buildingId, result);
         }
 
-        
-        [Test] // 03
-        public void BuildingControllerSingleParameterConstructor_BuildingId_ConvertToLowercase()
+
+        // test Single Parameter Constructor converts the upper case letters to lower case letters
+        [TestCase("B0010")] // 03
+        [TestCase("A0020")] // 04
+        public void BuildingControllerSingleParameterConstructor_BuildingId_ConvertToLowercase(string buildingId)
         {
             //Arrange
-            BuildingController buildingController = new BuildingController("B0010");
+            BuildingController buildingController = new BuildingController(buildingId);
 
             //Act
             string result = buildingController.GetBuildingID();
 
             //Assert
-            Assert.AreEqual("b0010", result);
+            Assert.AreEqual(buildingId.ToLower(), result);
         }
 
 
-        [Test] // 04
+        // test SetBuildingID() method set the same value pass into it
+        [TestCase("b0020")] // 05
+        [TestCase("b0030")] // 06
+        public void BuildingControllerSetBuildingID_BuildingID_SetToSamePassingID(string buildingId)
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            buildingController.SetBuildingID(buildingId);
+            string bid = buildingController.GetBuildingID();
+
+            //Assert
+            Assert.AreEqual(buildingId, bid);
+        }
+
+
+        // test SetBuildingID() method converts the upper case letters to lower case letters
+        [TestCase("B0010")] // 07
+        [TestCase("C0020")] // 08
+        public void BuildingControllerSetBuildingID_BuildingID_ConvertToLowercase(string buildingId)
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            buildingController.SetBuildingID(buildingId);
+            string bid = buildingController.GetBuildingID();
+
+            //Assert
+            Assert.AreEqual(buildingId.ToLower(), bid);
+        }
+
+
+        // test SingleParameterConstructor set the initial state as "out of hours"
+        [Test] // 09
+        public void BuildingControllerSingleParameterConstructor_CurrentState_SetCurrentStateToOutOfHours()
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            string result = buildingController.GetCurrentState();
+
+            //Assert
+            Assert.AreEqual("out of hours", result);
+        }
+
+
+        // test GetCurrentState() method returns the current state that system is in
+        [Test] // 10
         public void BuildingControllerGetCurrentState_CurrentState_ReturnsTheCurrentStateAsOutOfHours()
         {
             //Arrange
@@ -160,31 +214,19 @@ namespace Smart_Building_Controller
         }
 
 
-        [Test] // 05
-        public void BuildingControllerSingleParameterConstructor_CurrentState_SetCurrentStateToOutOfHours()
+        // test SetCurrentState() method set the state for valid states ("closed", "out of hours", "open", "fire drill" or "fire alarm")
+        [TestCase("open", true)] // 11
+        [TestCase("closed", true)] // 12
+        [TestCase("out of hours", true)] // 13
+        [TestCase("fire alarm", true)] // 14
+        [TestCase("fire drill", true)] // 15
+        [TestCase("close", false)] // 16
+        public void BuildingControllerSetCurrentState_CurrentState_OnlyForIntroducedStates(string bState,
+            bool exceptedOutput)
         {
             //Arrange
             BuildingController buildingController = new BuildingController("b0010");
 
-            //Act
-            string result = buildingController.GetCurrentState();
-
-            //Assert
-            Assert.AreEqual("out of hours", result);
-        }
-
-        
-        [TestCase("open", true)] // 06
-        [TestCase("closed", true)] // 07
-        [TestCase("out of hours", true)] // 08
-        [TestCase("fire alarm", true)] // 09
-        [TestCase("fire drill", true)] // 10
-        [TestCase("close", false)] // 11
-        public void BuildingControllerSetCurrentState_CurrentState_OnlyForIntroducedStates(string bState, bool exceptedOutput)
-        {
-            //Arrange
-            BuildingController buildingController = new BuildingController("b0010");
-            
             //Act
             bool result = buildingController.SetCurrentState(bState);
 
@@ -192,15 +234,65 @@ namespace Smart_Building_Controller
             Assert.AreEqual(exceptedOutput, result);
         }
 
-       
+
+        // Level 02 Requirement
+
+        [TestCase("open", "closed", false)] // 17
+        [TestCase("closed", "open", false)] // 18
+        [TestCase("closed", "fire alarm", true)] // 19
+        [TestCase("open", "fire alarm", true)] // 20
+        [TestCase("out of hours", "fire alarm", true)] // 21
+        [TestCase("open", "open", true)] // 22
+        [TestCase("closed", "closed", true)] // 23
+        [TestCase("fire drill", "fire alarm", false)] // 24
+        [TestCase("fire alarm", "fire drill", false)] // 25
+        public void BuildingControllerSetCurrentState_SetCurrentState_ReturnTrueItIsPossible(string bState,
+            string nextState, bool exceptedOutput)
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            buildingController.SetCurrentState(bState);
+            bool result = buildingController.SetCurrentState(nextState);
+
+            //Assert
+            Assert.AreEqual(exceptedOutput, result);
+        }
+
+        // test SetCurrentState() method returns true and remain in the same state
+        [TestCase("open", true)] // 26
+        [TestCase("closed", true)] // 27
+        [TestCase("out of hours", true)] // 28
+        [TestCase("fire alarm", true)] // 29
+        [TestCase("fire drill", true)] // 30
+        public void BuildingControllerSetCurrentState_CurrentState_ReturnsTrueIfSameState(string bState,
+            bool exceptedOutput)
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            buildingController.SetCurrentState(bState);
+            bool result = buildingController.SetCurrentState(bState);
+            string state = buildingController.GetCurrentState();
+            //Assert
+            Assert.AreEqual(exceptedOutput, result);
+            Assert.AreEqual(bState, state);
+        }
+
+
+        // test double parameter constructor can only be initialised to one of the three normal
+        // operation states("closed", "out of hours" or "open")
         // should assign to current state
-        [TestCase("b0010" , "open")] // 12
-        [TestCase("b0010", "closed")]  // 13  
-        [TestCase("b0010", "out of hours")] // 14
+        [TestCase("b0010", "open")] // 22
+        [TestCase("b0010", "closed")] // 23  
+        [TestCase("b0010", "out of hours")] // 24
         // should not assign the current state to fire alarm and fire drill
-        [TestCase("b0010", "fire alarm")] // 15
-        [TestCase("b0010", "fire drill")] // 16
-        public void BuildingControllerDoubleParameterConstructor_ConstructorSetCurrentStatus_AssignWhatUserInputs(string buildingId , string bState)
+        [TestCase("b0010", "fire alarm")] // 25
+        [TestCase("b0010", "fire drill")] // 26
+        public void BuildingControllerDoubleParameterConstructor_ConstructorSetCurrentStatus_AssignWhatUserInputs(
+            string buildingId, string bState)
         {
             //Arrange
             BuildingController buildingController = new BuildingController(buildingId, bState);
@@ -215,16 +307,20 @@ namespace Smart_Building_Controller
         }
 
 
+        // test the exception is thrown when the double parameter constructor is attempting to initialise the
+        // state to "fire drill" or "fire alarm" or any other state except "closed", "out of hours" or "open"
         // should throw exception
-        [TestCase("b0010", "fire alarm")] // 17
-        [TestCase("b0010", "fire drill")] // 18
+        [TestCase("b0010", "fire alarm")] // 31
+        [TestCase("b0010", "fire drill")] // 32
         // should not throw exception
-        [TestCase("b0010", "open")] // 19
-        public void BuildingControllerConstructor_ConstructorSetCurrentStatus_ExceptionThrown(string buildingId, string bState)
+        [TestCase("b0010", "open")] // 33
+        public void BuildingControllerConstructor_ConstructorSetCurrentStatus_ExceptionThrown(string buildingId,
+            string bState)
         {
             //Arrange
             string exceptionMessage = " ";
-            string expectExMessage = "Argument Exception: BuildingController can only be initialised to the following states 'open', 'closed', 'out of hours'";
+            string expectExMessage =
+                "Argument Exception: BuildingController can only be initialised to the following states 'open', 'closed', 'out of hours'";
             try
             {
                 BuildingController buildingController = new BuildingController(buildingId, bState);
@@ -233,84 +329,41 @@ namespace Smart_Building_Controller
                 var buildingStatus = buildingController.GetCurrentState();
                 string bId = buildingController.GetBuildingID();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 exceptionMessage = ex.Message;
             }
+
             //Assert
             Assert.AreEqual(expectExMessage, exceptionMessage);
         }
 
-        
-        [TestCase("open" ,"closed" , false)] // 20
-        [TestCase("closed", "open", false)] // 21
-        [TestCase("closed", "fire alarm", true)] // 22
-        [TestCase("open", "fire alarm", true)] // 23
-        [TestCase("out of hours", "fire alarm", true)] // 24
-        [TestCase("open", "open", true)] // 25
-        [TestCase("closed", "closed", true)] // 26
-        [TestCase("fire drill", "fire alarm", false)] // 27
-        [TestCase("fire alarm", "fire drill", false)] // 28
-        public void BuildingControllerSetCurrentState_SetCurrentState_ReturnTrueItIsPossible(string bState, string nextState , bool exceptedOutput)
-        {
-            //Arrange
-            BuildingController buildingController = new BuildingController("b0010");
-            
-            //Act
-            buildingController.SetCurrentState(bState);
-            bool result = buildingController.SetCurrentState(nextState);
 
-            //Assert
-            Assert.AreEqual(exceptedOutput, result);
-        }
+        // Level 03 Requirement
 
-
-        [Test] // 29
-        public void BuildingControllerSetBuildingID_BuildingID_SameToPassingID()
-        {
-            //Arrange
-            BuildingController buildingController = new BuildingController("b0010");
-
-            //Act
-            buildingController.SetBuildingID("b0020");
-            string bid = buildingController.GetBuildingID();
-
-            //Assert
-            Assert.AreEqual("b0020", bid);
-        }
-
-        [Test] // 30
-        public void BuildingControllerSetBuildingID_BuildingID_ConvertToLowercase()
-        {
-            //Arrange
-            BuildingController buildingController = new BuildingController("b0010");
-
-            //Act
-            buildingController.SetBuildingID("B0020");
-            string bid = buildingController.GetBuildingID();
-
-            //Assert
-            Assert.AreEqual("b0020", bid);
-        }
-
-
-        [TestCase("Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", false)] // 31
-        [TestCase("Lights,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,OK,", true)] // 32
-        [TestCase("FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,FAULT,", true)] // 33
-        public void BuildingControllerHaveFault_Status_ReturnFalseIfNoFault(string status, bool exceptedOutput)
-        {
-            //Arrange
-            BuildingController buildingController = new BuildingController("b0010");
-
-            //Act
-            bool result = buildingController.HaveFault(status);
-
-            //Assert
-            Assert.AreEqual(exceptedOutput, result);
-        }
-
-
+        // test 3 manager classes GetStatus() method
         [Test] // 34
+        public void ManagerClassGetStatus_Status_ReturnStatusAsString()
+        {
+            //Arrange
+            IDoorManagerStub doorManagerStub = new IDoorManagerStub();
+            ILightManagerStub lightManagerStub = new ILightManagerStub();
+            IFireAlarmManagerStub fireAlarmManagerStub = new IFireAlarmManagerStub();
+
+            //Act
+            string doorStatus = doorManagerStub.GetStatus();
+            string lightStatus = lightManagerStub.GetStatus();
+            string fireAlarmStatus = fireAlarmManagerStub.GetStatus();
+
+            //Assert
+            Assert.AreEqual("Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", doorStatus);
+            Assert.AreEqual("Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,", lightStatus);
+            Assert.AreEqual("FireAlarm,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,", fireAlarmStatus);
+
+        }
+
+        // test GetStatusReport() method returns all three manager classes status as a single string
+        [Test] // 35
         public void BuildingControllerGetStatusReport_Status_ReturnAllStatusOfManagerClasses()
         {
             //Arrange
@@ -327,15 +380,69 @@ namespace Smart_Building_Controller
         }
 
 
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "")] // 35
-        [TestCase("Lights,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,")] // 36
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,")] // 37
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,", "FireAlarm,")] // 38
-        [TestCase("Lights,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,Doors,")] // 39
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,FireAlarm,")] // 40
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,FireAlarm,")] // 41
-        [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,", "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,Doors,FireAlarm,")] // 42
-        public void GetStatusReport_CheckFault_AssignFaultDeviceName(string lightStatus, string doorStatus, string alarmStatus, string expectedOutput) // get the full status about all classes
+        [Test]
+        public void askdfh()
+        {
+            //Arrange
+            IDoorManagerStub doorManger = new IDoorManagerStub();
+            ILightManagerStub lightManager = new ILightManagerStub();
+            IFireAlarmManagerStub fireAlarmManager = new IFireAlarmManagerStub();
+            IEmailServiceStub emailService = new IEmailServiceStub();
+            IWebServiceStub webService = new IWebServiceStub();
+        
+            BuildingController buildingController = new BuildingController("b0010", lightManager, fireAlarmManager,
+                doorManger, webService, emailService);
+        
+            //Act
+            bool result = buildingController.SetCurrentState("open");
+            string state = buildingController.GetCurrentState();
+        
+            //Assert
+            Assert.AreEqual(false, result);
+            Assert.AreEqual("out of hours", state);
+        }
+
+
+
+        // Level 04 Requirement
+
+        // test HaveFault() method returns true if the status string contains a FAULT
+        [TestCase("Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", false)] // 36
+        [TestCase("Lights,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,OK,", true)] // 37
+        [TestCase("FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,FAULT,", true)] // 38
+        public void BuildingControllerHaveFault_Status_ReturnFalseIfNoFault(string status, bool exceptedOutput)
+        {
+            //Arrange
+            BuildingController buildingController = new BuildingController("b0010");
+
+            //Act
+            bool result = buildingController.HaveFault(status);
+
+            //Assert
+            Assert.AreEqual(exceptedOutput, result);
+        }
+
+
+        // test inside GetStatusReport() whether will it be able to identify the type of device that has shown a
+        // fault using HaveFault method
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "")] // 39
+        [TestCase("Lights,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,")] // 40
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,")] // 41
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,", "FireAlarm,")] // 42
+        [TestCase("Lights,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,Doors,")] // 43
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,FireAlarm,")] // 44
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,FireAlarm,")] // 45
+        [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
+            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,Doors,FireAlarm,")] // 46
+        public void GetStatusReport_CheckFault_AssignFaultDeviceName(string lightStatus, string doorStatus,
+            string alarmStatus, string expectedOutput) // get the full status about all classes
         {
             //Arrange
             string logString = "";
@@ -390,7 +497,7 @@ namespace Smart_Building_Controller
         //
         //     Assert.AreEqual("Exception from LogFireAlarm", exceptionMessage);
         // }
-        
+
 
     }
 }

@@ -16,7 +16,7 @@ namespace Smart_Building_Controller
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new BuildingController("23"));
+            Application.Run(new SplashScreen());
         }
     }
 }

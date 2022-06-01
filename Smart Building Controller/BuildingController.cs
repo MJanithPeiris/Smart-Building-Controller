@@ -15,11 +15,16 @@ namespace Smart_Building_Controller
         private string buildingID;
         private string currentState;
         private string historyState;
-        private IDoorManager doorManger = new IDoorManager();
-        private ILightManager lightManager = new ILightManager();
-        private IFireAlarmManager fireAlarmManager = new IFireAlarmManager();
-        private IEmailService emailService = new IEmailService();
-        private IWebService webService = new IWebService();
+        public IDoorManager doorManger = new IDoorManager();
+        public ILightManager lightManager = new ILightManager();
+        public IFireAlarmManager fireAlarmManager = new IFireAlarmManager();
+        public IEmailService emailService = new IEmailService();
+        public IWebService webService = new IWebService();
+        // public IDoorManager doorManger;
+        // public ILightManager lightManager;
+        // public IFireAlarmManager fireAlarmManager;
+        // public IEmailService emailService;
+        // public IWebService webService;
 
 
         public BuildingController()
@@ -128,7 +133,10 @@ namespace Smart_Building_Controller
                 case "fire drill":
                     if (currentState != "fire alarm")
                     {
-                        historyState = currentState; // save the current state to history state
+                        if (currentState != "fire drill")
+                        {
+                            historyState = currentState; // save the current state to history state
+                        }
                         currentState = state.ToLower();
                     }
                     else
@@ -140,7 +148,10 @@ namespace Smart_Building_Controller
                 case "fire alarm":
                     if (currentState != "fire drill")
                     {
-                        historyState = currentState; // save the current state to history state
+                        if (currentState != "fire alarm")
+                        {
+                            historyState = currentState; // save the current state to history state
+                        }
                         currentState = state.ToLower();
                         fireAlarmManager.SetAlarm(true);
                         doorManger.OpenAllDoors();
@@ -178,9 +189,10 @@ namespace Smart_Building_Controller
             buildingID = id.ToLower(); // convert to lowercase
         }
 
+        private string logString;
         public string GetStatusReport() // get the full status about all classes
         {
-            string logString = "";
+            logString = "";
             // if a fault is in the status, then it will assign the name of the object to log string
             if (HaveFault(lightManager.GetStatus()))
             {
@@ -196,7 +208,7 @@ namespace Smart_Building_Controller
             {
                 logString += "FireAlarm,";
             }
-
+            
             if (logString != "")
             {
                 webService.LogEngineerRequired(logString);
@@ -222,6 +234,7 @@ namespace Smart_Building_Controller
             return false;
         }
 
+        // UI Mapping
         private void BuildingController_Load(object sender, EventArgs e)
         {
             if (currentState == "out of hours")
@@ -284,6 +297,62 @@ namespace Smart_Building_Controller
             
         }
 
-        
+        private void tgbtn_fire_drill_CheckedChanged(object sender, EventArgs e)
+        {
+            
+
+            if (currentState == "fire alarm")
+            {
+                tgbtn_fire_drill.Checked = false;
+                MessageBox.Show("Currently you are in 'Fire Alarm'. Can't shift to 'Fire Drill'","Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (tgbtn_fire_drill.Checked == false)
+                {
+                    currentState = historyState;
+                }
+                else
+                {
+                    SetCurrentState("fire drill");
+                }
+            }
+        }
+
+        private void tgbtn_fire_alarm_CheckedChanged(object sender, EventArgs e)
+        {
+            if (currentState == "fire drill")
+            {
+                tgbtn_fire_alarm.Checked = false;
+                MessageBox.Show("Currently you are in 'Fire Drill'. Can't shift to 'Fire Alarm'", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (tgbtn_fire_alarm.Checked == false)
+                {
+                    currentState = historyState;
+                }
+                else
+                {
+                    SetCurrentState("fire alarm");
+                }
+            }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+            label6.Text = currentState;
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            label7.Text = historyState;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            GetStatusReport();
+            lbl_notification.Text = " Fault in : \n " + logString;
+        }
     }
 }

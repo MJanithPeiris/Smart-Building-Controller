@@ -14,7 +14,7 @@ namespace Smart_Building_Controller.New_Created_Tools
     {
         //Fields
         private int borderSize = 0;
-        private int borderRadius = 20;
+        private int borderRadius = 25;
         private Color borderColor = Color.Black;
 
         //Constructor
@@ -22,7 +22,7 @@ namespace Smart_Building_Controller.New_Created_Tools
         {
             this.FlatStyle = FlatStyle.Flat;
             this.FlatAppearance.BorderSize = 0;
-            this.Size = new Size(150, 40);
+            this.Size = new Size(50, 50);
             this.BackColor = Color.Gray;
             this.ForeColor = Color.White;
             this.Resize += new EventHandler(Button_Resize);

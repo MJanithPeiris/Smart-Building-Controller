@@ -19,14 +19,15 @@ namespace Smart_Building_Controller
             InitializeComponent();
         }
 
-        public string getStatus()
+        public string GetStatus()
         {
             return "";
         }
 
-        public void setEngineerRequired(bool needsEngineer)
+        public bool SetEngineerRequired(bool needsEngineer)
         {
-            engineerRequired = needsEngineer;
+             engineerRequired = needsEngineer;
+             return engineerRequired;
         }
     }
 }

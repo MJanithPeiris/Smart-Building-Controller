@@ -29,7 +29,8 @@ namespace Smart_Building_Controller
         /// </summary>
         private void InitializeComponent()
         {
-            this.roundEdgePanel1 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Manager));
+            this.roundEdgePanel1 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.lbl_required_engineer = new System.Windows.Forms.Label();
             this.roundEdgePanel1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +64,8 @@ namespace Smart_Building_Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1162, 703);
             this.Controls.Add(this.roundEdgePanel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -76,7 +79,7 @@ namespace Smart_Building_Controller
 
         #endregion
 
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel1;
-        private System.Windows.Forms.Label lbl_required_engineer;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel1;
+        protected System.Windows.Forms.Label lbl_required_engineer;
     }
 }

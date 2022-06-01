@@ -12,27 +12,54 @@ namespace Smart_Building_Controller
 {
     public partial class ILightManager : Manager
     {
-        private bool[] lights = { false, false, false, false, false, false, false, false, false, false };
         public ILightManager()
         {
             InitializeComponent();
         }
-        public void setLight(bool isOn, int lightID)
+
+        public virtual void SetLight(bool isOn, int lightID)
         {
-            lights[lightID] = isOn;
+            
         }
 
-        public void setAllLights(bool isOn)
+        public virtual void SetAllLights(bool isOn)
         {
-            for (int i = 0; i < lights.Length; i++)
+            
+        }
+
+        public virtual string GetStatus()
+        {
+            return "Lights,OK,OK,FAULT,OK,OK,OK,OK,FAULT,OK,OK,";
+        }
+
+        private void tgbtn_all_lights_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgbtn_all_lights.Checked)
             {
-                lights[i] = isOn;
+                tgbtn_light_1.Checked = true;
+                tgbtn_light_2.Checked = true;
+                tgbtn_light_3.Checked = true;
+                tgbtn_light_4.Checked = true;
+                tgbtn_light_5.Checked = true;
+                tgbtn_light_6.Checked = true;
+                tgbtn_light_7.Checked = true;
+                tgbtn_light_8.Checked = true;
+                tgbtn_light_9.Checked = true;
+                tgbtn_light_10.Checked = true;
             }
-        }
-
-        public string getStatus()
-        {
-            return "";
+            else
+            {
+                tgbtn_light_1.Checked = false;
+                tgbtn_light_2.Checked = false;
+                tgbtn_light_3.Checked = false;
+                tgbtn_light_4.Checked = false;
+                tgbtn_light_5.Checked = false;
+                tgbtn_light_6.Checked = false;
+                tgbtn_light_7.Checked = false;
+                tgbtn_light_8.Checked = false;
+                tgbtn_light_9.Checked = false;
+                tgbtn_light_10.Checked = false;
+            }
         }
     }
 }

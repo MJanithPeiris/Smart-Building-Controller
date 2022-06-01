@@ -18,21 +18,22 @@ namespace Smart_Building_Controller
         }
 
 
-        public void logStateChange(string logDetails)
+        public virtual void LogStateChange(string logDetails)
         {
 
         }
 
 
-        public void logEngineerRequired(string logDetails)
+        public virtual void LogEngineerRequired(string logDetails)
         {
 
         }
 
 
-        public void logFireAlarm(string logDetails)
+        public virtual void LogFireAlarm(string logDetails)
         {
 
         }
+
     }
 }

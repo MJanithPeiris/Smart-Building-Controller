@@ -29,11 +29,12 @@ namespace Smart_Building_Controller
         /// </summary>
         private void InitializeComponent()
         {
-            this.roundEdgePanel3 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ILightManager));
+            this.roundEdgePanel3 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.label11 = new System.Windows.Forms.Label();
             this.tgbtn_all_lights = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label12 = new System.Windows.Forms.Label();
-            this.roundEdgePanel2 = new Test_for_tdd.NewControls.RoundEdgePanel();
+            this.roundEdgePanel2 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.tgbtn_light_10 = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label13 = new System.Windows.Forms.Label();
             this.tgbtn_light_9 = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
@@ -62,14 +63,15 @@ namespace Smart_Building_Controller
             // roundEdgePanel3
             // 
             this.roundEdgePanel3.BackColor = System.Drawing.Color.Black;
-            this.roundEdgePanel3.BorderColor = System.Drawing.Color.White;
+            this.roundEdgePanel3.BorderColor = System.Drawing.Color.Black;
             this.roundEdgePanel3.Controls.Add(this.label11);
             this.roundEdgePanel3.Controls.Add(this.tgbtn_all_lights);
             this.roundEdgePanel3.Controls.Add(this.label12);
             this.roundEdgePanel3.Location = new System.Drawing.Point(32, 530);
+            this.roundEdgePanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.roundEdgePanel3.Name = "roundEdgePanel3";
             this.roundEdgePanel3.Radius = 20;
-            this.roundEdgePanel3.Size = new System.Drawing.Size(470, 65);
+            this.roundEdgePanel3.Size = new System.Drawing.Size(469, 65);
             this.roundEdgePanel3.TabIndex = 6;
             this.roundEdgePanel3.Thickness = 5F;
             // 
@@ -87,15 +89,17 @@ namespace Smart_Building_Controller
             // tgbtn_all_lights
             // 
             this.tgbtn_all_lights.Location = new System.Drawing.Point(199, 14);
+            this.tgbtn_all_lights.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_all_lights.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_all_lights.Name = "tgbtn_all_lights";
             this.tgbtn_all_lights.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_all_lights.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_all_lights.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_all_lights.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_all_lights.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_all_lights.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_all_lights.TabIndex = 6;
             this.tgbtn_all_lights.UseVisualStyleBackColor = true;
+            this.tgbtn_all_lights.CheckedChanged += new System.EventHandler(this.tgbtn_all_lights_CheckedChanged);
             // 
             // label12
             // 
@@ -111,7 +115,7 @@ namespace Smart_Building_Controller
             // roundEdgePanel2
             // 
             this.roundEdgePanel2.BackColor = System.Drawing.Color.Black;
-            this.roundEdgePanel2.BorderColor = System.Drawing.Color.White;
+            this.roundEdgePanel2.BorderColor = System.Drawing.Color.Black;
             this.roundEdgePanel2.Controls.Add(this.tgbtn_light_10);
             this.roundEdgePanel2.Controls.Add(this.label13);
             this.roundEdgePanel2.Controls.Add(this.tgbtn_light_9);
@@ -133,9 +137,10 @@ namespace Smart_Building_Controller
             this.roundEdgePanel2.Controls.Add(this.tgbtn_light_1);
             this.roundEdgePanel2.Controls.Add(this.label3);
             this.roundEdgePanel2.ForeColor = System.Drawing.Color.Black;
-            this.roundEdgePanel2.Location = new System.Drawing.Point(32, 205);
+            this.roundEdgePanel2.Location = new System.Drawing.Point(32, 206);
+            this.roundEdgePanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.roundEdgePanel2.Name = "roundEdgePanel2";
-            this.roundEdgePanel2.Radius = 30;
+            this.roundEdgePanel2.Radius = 20;
             this.roundEdgePanel2.Size = new System.Drawing.Size(1100, 255);
             this.roundEdgePanel2.TabIndex = 5;
             this.roundEdgePanel2.Thickness = 5F;
@@ -143,13 +148,14 @@ namespace Smart_Building_Controller
             // tgbtn_light_10
             // 
             this.tgbtn_light_10.Location = new System.Drawing.Point(401, 183);
+            this.tgbtn_light_10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_10.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_10.Name = "tgbtn_light_10";
             this.tgbtn_light_10.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_10.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_10.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_10.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_10.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_10.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_10.TabIndex = 21;
             this.tgbtn_light_10.UseVisualStyleBackColor = true;
             // 
@@ -167,13 +173,14 @@ namespace Smart_Building_Controller
             // tgbtn_light_9
             // 
             this.tgbtn_light_9.Location = new System.Drawing.Point(132, 183);
+            this.tgbtn_light_9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_9.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_9.Name = "tgbtn_light_9";
             this.tgbtn_light_9.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_9.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_9.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_9.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_9.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_9.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_9.TabIndex = 19;
             this.tgbtn_light_9.UseVisualStyleBackColor = true;
             // 
@@ -182,7 +189,7 @@ namespace Smart_Building_Controller
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.White;
-            this.label14.Location = new System.Drawing.Point(42, 193);
+            this.label14.Location = new System.Drawing.Point(43, 193);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(83, 22);
             this.label14.TabIndex = 18;
@@ -190,14 +197,15 @@ namespace Smart_Building_Controller
             // 
             // tgbtn_light_8
             // 
-            this.tgbtn_light_8.Location = new System.Drawing.Point(970, 109);
+            this.tgbtn_light_8.Location = new System.Drawing.Point(971, 110);
+            this.tgbtn_light_8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_8.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_8.Name = "tgbtn_light_8";
             this.tgbtn_light_8.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_8.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_8.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_8.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_8.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_8.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_8.TabIndex = 17;
             this.tgbtn_light_8.UseVisualStyleBackColor = true;
             // 
@@ -214,14 +222,15 @@ namespace Smart_Building_Controller
             // 
             // tgbtn_light_7
             // 
-            this.tgbtn_light_7.Location = new System.Drawing.Point(684, 109);
+            this.tgbtn_light_7.Location = new System.Drawing.Point(684, 110);
+            this.tgbtn_light_7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_7.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_7.Name = "tgbtn_light_7";
             this.tgbtn_light_7.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_7.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_7.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_7.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_7.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_7.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_7.TabIndex = 15;
             this.tgbtn_light_7.UseVisualStyleBackColor = true;
             // 
@@ -230,7 +239,7 @@ namespace Smart_Building_Controller
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(594, 119);
+            this.label8.Location = new System.Drawing.Point(595, 119);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(83, 22);
             this.label8.TabIndex = 14;
@@ -238,14 +247,15 @@ namespace Smart_Building_Controller
             // 
             // tgbtn_light_6
             // 
-            this.tgbtn_light_6.Location = new System.Drawing.Point(401, 109);
+            this.tgbtn_light_6.Location = new System.Drawing.Point(401, 110);
+            this.tgbtn_light_6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_6.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_6.Name = "tgbtn_light_6";
             this.tgbtn_light_6.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_6.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_6.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_6.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_6.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_6.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_6.TabIndex = 13;
             this.tgbtn_light_6.UseVisualStyleBackColor = true;
             // 
@@ -262,14 +272,15 @@ namespace Smart_Building_Controller
             // 
             // tgbtn_light_5
             // 
-            this.tgbtn_light_5.Location = new System.Drawing.Point(132, 109);
+            this.tgbtn_light_5.Location = new System.Drawing.Point(132, 110);
+            this.tgbtn_light_5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_5.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_5.Name = "tgbtn_light_5";
             this.tgbtn_light_5.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_5.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_5.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_5.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_5.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_5.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_5.TabIndex = 11;
             this.tgbtn_light_5.UseVisualStyleBackColor = true;
             // 
@@ -278,7 +289,7 @@ namespace Smart_Building_Controller
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(42, 119);
+            this.label10.Location = new System.Drawing.Point(43, 119);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(83, 22);
             this.label10.TabIndex = 10;
@@ -286,14 +297,15 @@ namespace Smart_Building_Controller
             // 
             // tgbtn_light_4
             // 
-            this.tgbtn_light_4.Location = new System.Drawing.Point(970, 30);
+            this.tgbtn_light_4.Location = new System.Drawing.Point(971, 30);
+            this.tgbtn_light_4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_4.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_4.Name = "tgbtn_light_4";
             this.tgbtn_light_4.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_4.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_4.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_4.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_4.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_4.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_4.TabIndex = 9;
             this.tgbtn_light_4.UseVisualStyleBackColor = true;
             // 
@@ -302,7 +314,7 @@ namespace Smart_Building_Controller
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(880, 40);
+            this.label6.Location = new System.Drawing.Point(880, 39);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(83, 22);
             this.label6.TabIndex = 8;
@@ -311,13 +323,14 @@ namespace Smart_Building_Controller
             // tgbtn_light_3
             // 
             this.tgbtn_light_3.Location = new System.Drawing.Point(684, 30);
+            this.tgbtn_light_3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_3.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_3.Name = "tgbtn_light_3";
             this.tgbtn_light_3.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_3.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_3.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_3.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_3.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_3.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_3.TabIndex = 7;
             this.tgbtn_light_3.UseVisualStyleBackColor = true;
             // 
@@ -326,7 +339,7 @@ namespace Smart_Building_Controller
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(594, 40);
+            this.label5.Location = new System.Drawing.Point(595, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 22);
             this.label5.TabIndex = 6;
@@ -335,13 +348,14 @@ namespace Smart_Building_Controller
             // tgbtn_light_2
             // 
             this.tgbtn_light_2.Location = new System.Drawing.Point(401, 30);
+            this.tgbtn_light_2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_2.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_2.Name = "tgbtn_light_2";
             this.tgbtn_light_2.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_2.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_2.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_2.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_2.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_2.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_2.TabIndex = 5;
             this.tgbtn_light_2.UseVisualStyleBackColor = true;
             // 
@@ -350,7 +364,7 @@ namespace Smart_Building_Controller
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(311, 40);
+            this.label4.Location = new System.Drawing.Point(311, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(83, 22);
             this.label4.TabIndex = 4;
@@ -359,13 +373,14 @@ namespace Smart_Building_Controller
             // tgbtn_light_1
             // 
             this.tgbtn_light_1.Location = new System.Drawing.Point(132, 30);
+            this.tgbtn_light_1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tgbtn_light_1.MinimumSize = new System.Drawing.Size(60, 30);
             this.tgbtn_light_1.Name = "tgbtn_light_1";
             this.tgbtn_light_1.OffBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(57)))), ((int)(((byte)(43)))));
             this.tgbtn_light_1.OffToggleColor = System.Drawing.Color.Gainsboro;
             this.tgbtn_light_1.OnBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
             this.tgbtn_light_1.OnToggleColor = System.Drawing.Color.WhiteSmoke;
-            this.tgbtn_light_1.Size = new System.Drawing.Size(75, 40);
+            this.tgbtn_light_1.Size = new System.Drawing.Size(75, 39);
             this.tgbtn_light_1.TabIndex = 3;
             this.tgbtn_light_1.UseVisualStyleBackColor = true;
             // 
@@ -374,7 +389,7 @@ namespace Smart_Building_Controller
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Britannic Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(42, 40);
+            this.label3.Location = new System.Drawing.Point(43, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(83, 22);
             this.label3.TabIndex = 1;
@@ -383,8 +398,9 @@ namespace Smart_Building_Controller
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(43, 24);
+            this.label2.Location = new System.Drawing.Point(43, 25);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(402, 54);
             this.label2.TabIndex = 4;
@@ -394,10 +410,13 @@ namespace Smart_Building_Controller
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1162, 703);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(1163, 703);
             this.Controls.Add(this.roundEdgePanel3);
             this.Controls.Add(this.roundEdgePanel2);
             this.Controls.Add(this.label2);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.Name = "ILightManager";
             this.Text = "ILightManager";
             this.Controls.SetChildIndex(this.label2, 0);
@@ -414,11 +433,11 @@ namespace Smart_Building_Controller
 
         #endregion
 
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel3;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel3;
         private System.Windows.Forms.Label label11;
         private New_Created_Tools.ToggleButton tgbtn_all_lights;
         private System.Windows.Forms.Label label12;
-        private Test_for_tdd.NewControls.RoundEdgePanel roundEdgePanel2;
+        private Smart_Building_Controller.New_Created_Tools.RoundEdgePanel roundEdgePanel2;
         private New_Created_Tools.ToggleButton tgbtn_light_10;
         private System.Windows.Forms.Label label13;
         private New_Created_Tools.ToggleButton tgbtn_light_9;

@@ -12,54 +12,64 @@ namespace Smart_Building_Controller
 {
     public partial class IDoorManager : Manager
     {
-        private bool[] doors = { false, false, false, false, false, false, false, false, false, false };
         public IDoorManager()
         {
             InitializeComponent();
         }
 
-        public bool openDoor(int doorID)
+        public virtual bool OpenDoor(int doorID)
         {
-            return doors[doorID];
-        }
-
-        public bool lockDoor(int doorID)
-        {
-            return doors[doorID];
-        }
-
-        public bool openAllDoors()
-        {
-            for (int i = 0; i < doors.Length; i++)
-            {
-                //doors[i] = true;
-                if (!doors[i])
-                {
-                    return false;
-                }
-            }
-
             return true;
         }
 
-        public bool lockAllDoors()
+        public virtual bool LockDoor(int doorID)
         {
-            for (int i = 0; i < doors.Length; i++)
-            {
-                //doors[i] = false;
-                if (!doors[i])
-                {
-                    return false;
-                }
-            }
-
             return true;
         }
 
-        public string getStatus()
+        public virtual bool OpenAllDoors()
         {
-            return "";
+            return true;
         }
 
+        public virtual bool LockAllDoors()
+        {
+            return true;
+        }
+
+        public virtual string GetStatus()
+        {
+            return "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,";
+        }
+
+        private void tgbtn_all_doors_CheckedChanged(object sender, EventArgs e)
+        {
+            if (tgbtn_all_doors.Checked)
+            {
+                tgbtn_door_1.Checked = true;
+                tgbtn_door_2.Checked = true;
+                tgbtn_door_3.Checked = true;
+                tgbtn_door_4.Checked = true;
+                tgbtn_door_5.Checked = true;
+                tgbtn_door_6.Checked = true;
+                tgbtn_door_7.Checked = true;
+                tgbtn_door_8.Checked = true;
+                tgbtn_door_9.Checked = true;
+                tgbtn_door_10.Checked = true;
+            }
+            else
+            {
+                tgbtn_door_1.Checked = false;
+                tgbtn_door_2.Checked = false;
+                tgbtn_door_3.Checked = false;
+                tgbtn_door_4.Checked = false;
+                tgbtn_door_5.Checked = false;
+                tgbtn_door_6.Checked = false;
+                tgbtn_door_7.Checked = false;
+                tgbtn_door_8.Checked = false;
+                tgbtn_door_9.Checked = false;
+                tgbtn_door_10.Checked = false;
+            }
+        }
     }
 }

@@ -20,12 +20,7 @@ namespace Smart_Building_Controller
         public IFireAlarmManager fireAlarmManager = new IFireAlarmManager();
         public IEmailService emailService = new IEmailService();
         public IWebService webService = new IWebService();
-        // public IDoorManager doorManger;
-        // public ILightManager lightManager;
-        // public IFireAlarmManager fireAlarmManager;
-        // public IEmailService emailService;
-        // public IWebService webService;
-
+        
 
         public BuildingController()
         {

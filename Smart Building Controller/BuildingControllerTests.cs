@@ -236,16 +236,20 @@ namespace Smart_Building_Controller
 
 
         // Level 02 Requirement
-
+        // test SetCurrentState() method works according to the state transition diagram.
         [TestCase("open", "closed", false)] // 17
         [TestCase("closed", "open", false)] // 18
         [TestCase("closed", "fire alarm", true)] // 19
         [TestCase("open", "fire alarm", true)] // 20
         [TestCase("out of hours", "fire alarm", true)] // 21
-        [TestCase("open", "open", true)] // 22
-        [TestCase("closed", "closed", true)] // 23
-        [TestCase("fire drill", "fire alarm", false)] // 24
-        [TestCase("fire alarm", "fire drill", false)] // 25
+        [TestCase("closed", "fire drill", true)] // 22
+        [TestCase("open", "fire drill", true)] // 23
+        [TestCase("out of hours", "fire drill", true)] // 24
+        [TestCase("open", "open", true)] // 25
+        [TestCase("closed", "closed", true)] // 26
+        [TestCase("out of hours", "out of hours", true)] // 27
+        [TestCase("fire drill", "fire alarm", false)] // 28
+        [TestCase("fire alarm", "fire drill", false)] // 29
         public void BuildingControllerSetCurrentState_SetCurrentState_ReturnTrueItIsPossible(string bState,
             string nextState, bool exceptedOutput)
         {
@@ -261,11 +265,11 @@ namespace Smart_Building_Controller
         }
 
         // test SetCurrentState() method returns true and remain in the same state
-        [TestCase("open", true)] // 26
-        [TestCase("closed", true)] // 27
-        [TestCase("out of hours", true)] // 28
-        [TestCase("fire alarm", true)] // 29
-        [TestCase("fire drill", true)] // 30
+        [TestCase("open", true)] // 30
+        [TestCase("closed", true)] // 31
+        [TestCase("out of hours", true)] // 32
+        [TestCase("fire alarm", true)] // 33
+        [TestCase("fire drill", true)] // 34
         public void BuildingControllerSetCurrentState_CurrentState_ReturnsTrueIfSameState(string bState,
             bool exceptedOutput)
         {
@@ -285,12 +289,12 @@ namespace Smart_Building_Controller
         // test double parameter constructor can only be initialised to one of the three normal
         // operation states("closed", "out of hours" or "open")
         // should assign to current state
-        [TestCase("b0010", "open")] // 22
-        [TestCase("b0010", "closed")] // 23  
-        [TestCase("b0010", "out of hours")] // 24
+        [TestCase("b0010", "open")] // 35
+        [TestCase("b0010", "closed")] // 36 
+        [TestCase("b0010", "out of hours")] // 37
         // should not assign the current state to fire alarm and fire drill
-        [TestCase("b0010", "fire alarm")] // 25
-        [TestCase("b0010", "fire drill")] // 26
+        [TestCase("b0010", "fire alarm")] // 38
+        [TestCase("b0010", "fire drill")] // 39
         public void BuildingControllerDoubleParameterConstructor_ConstructorSetCurrentStatus_AssignWhatUserInputs(
             string buildingId, string bState)
         {
@@ -310,10 +314,10 @@ namespace Smart_Building_Controller
         // test the exception is thrown when the double parameter constructor is attempting to initialise the
         // state to "fire drill" or "fire alarm" or any other state except "closed", "out of hours" or "open"
         // should throw exception
-        [TestCase("b0010", "fire alarm")] // 31
-        [TestCase("b0010", "fire drill")] // 32
+        [TestCase("b0010", "fire alarm")] // 40
+        [TestCase("b0010", "fire drill")] // 41
         // should not throw exception
-        [TestCase("b0010", "open")] // 33
+        [TestCase("b0010", "open")] // 42
         public void BuildingControllerConstructor_ConstructorSetCurrentStatus_ExceptionThrown(string buildingId,
             string bState)
         {
@@ -342,7 +346,7 @@ namespace Smart_Building_Controller
         // Level 03 Requirement
 
         // test 3 manager classes GetStatus() method
-        [Test] // 34
+        [Test] // 43
         public void ManagerClassGetStatus_Status_ReturnStatusAsString()
         {
             //Arrange
@@ -363,7 +367,7 @@ namespace Smart_Building_Controller
         }
 
         // test GetStatusReport() method returns all three manager classes status as a single string
-        [Test] // 35
+        [Test] // 44
         public void BuildingControllerGetStatusReport_Status_ReturnAllStatusOfManagerClasses()
         {
             //Arrange
@@ -380,36 +384,36 @@ namespace Smart_Building_Controller
         }
 
 
-        [Test]
-        public void askdfh()
-        {
-            //Arrange
-            IDoorManagerStub doorManger = new IDoorManagerStub();
-            ILightManagerStub lightManager = new ILightManagerStub();
-            IFireAlarmManagerStub fireAlarmManager = new IFireAlarmManagerStub();
-            IEmailServiceStub emailService = new IEmailServiceStub();
-            IWebServiceStub webService = new IWebServiceStub();
-        
-            BuildingController buildingController = new BuildingController("b0010", lightManager, fireAlarmManager,
-                doorManger, webService, emailService);
-        
-            //Act
-            bool result = buildingController.SetCurrentState("open");
-            string state = buildingController.GetCurrentState();
-        
-            //Assert
-            Assert.AreEqual(false, result);
-            Assert.AreEqual("out of hours", state);
-        }
+        // [Test]
+        // public void askdfh()
+        // {
+        //     //Arrange
+        //     IDoorManagerStub doorManger = new IDoorManagerStub();
+        //     ILightManagerStub lightManager = new ILightManagerStub();
+        //     IFireAlarmManagerStub fireAlarmManager = new IFireAlarmManagerStub();
+        //     IEmailServiceStub emailService = new IEmailServiceStub();
+        //     IWebServiceStub webService = new IWebServiceStub();
+        //
+        //     BuildingController buildingController = new BuildingController("b0010", lightManager, fireAlarmManager,
+        //         doorManger, webService, emailService);
+        //
+        //     //Act
+        //     bool result = buildingController.SetCurrentState("open");
+        //     string state = buildingController.GetCurrentState();
+        //
+        //     //Assert
+        //     Assert.AreEqual(false, result);
+        //     Assert.AreEqual("out of hours", state);
+        // }
 
 
 
         // Level 04 Requirement
 
         // test HaveFault() method returns true if the status string contains a FAULT
-        [TestCase("Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", false)] // 36
-        [TestCase("Lights,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,OK,", true)] // 37
-        [TestCase("FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,FAULT,", true)] // 38
+        [TestCase("Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", false)] // 45
+        [TestCase("Lights,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,OK,", true)] // 46
+        [TestCase("FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,FAULT,", true)] // 47
         public void BuildingControllerHaveFault_Status_ReturnFalseIfNoFault(string status, bool exceptedOutput)
         {
             //Arrange
@@ -426,21 +430,21 @@ namespace Smart_Building_Controller
         // test inside GetStatusReport() whether will it be able to identify the type of device that has shown a
         // fault using HaveFault method
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "")] // 39
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "")] // 48
         [TestCase("Lights,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,")] // 40
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,")] // 49
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,")] // 41
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,")] // 50
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,", "FireAlarm,")] // 42
+            "FireAlarm,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,", "FireAlarm,")] // 51
         [TestCase("Lights,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,Doors,")] // 43
+            "FireAlarm,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Lights,Doors,")] // 52
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,FireAlarm,")] // 44
+            "FireAlarm,OK,OK,OK,FAULT,OK,OK,OK,OK,OK,OK,", "Doors,FireAlarm,")] // 53
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,OK,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,FireAlarm,")] // 45
+            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,FireAlarm,")] // 54
         [TestCase("Lights,OK,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,", "Doors,OK,FAULT,OK,OK,OK,OK,OK,OK,OK,OK,",
-            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,Doors,FireAlarm,")] // 46
+            "FireAlarm,OK,OK,OK,OK,OK,FAULT,OK,OK,OK,OK,", "Lights,Doors,FireAlarm,")] // 55
         public void GetStatusReport_CheckFault_AssignFaultDeviceName(string lightStatus, string doorStatus,
             string alarmStatus, string expectedOutput) // get the full status about all classes
         {

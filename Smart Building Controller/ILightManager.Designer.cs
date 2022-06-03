@@ -402,16 +402,15 @@ namespace Smart_Building_Controller
             this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(43, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(402, 54);
+            this.label2.Size = new System.Drawing.Size(438, 68);
             this.label2.TabIndex = 4;
-            this.label2.Text = "LIGHT CONTROLLER";
+            this.label2.Text = "LIGHT MANAGER";
             // 
             // ILightManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1163, 703);
             this.Controls.Add(this.roundEdgePanel3);
             this.Controls.Add(this.roundEdgePanel2);

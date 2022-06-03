@@ -32,11 +32,9 @@ namespace Smart_Building_Controller
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildingController));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.lbl_notification = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.roundEdgePanel5 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.tgbtn_fire_drill = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label4 = new System.Windows.Forms.Label();
@@ -57,6 +55,7 @@ namespace Smart_Building_Controller
             this.roundEdgePanel1 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
             this.btn_web_service = new System.Windows.Forms.Button();
             this.btn_email_service = new System.Windows.Forms.Button();
+            this.lbl_system_state = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.roundEdgePanel5.SuspendLayout();
             this.roundEdgePanel4.SuspendLayout();
@@ -75,6 +74,14 @@ namespace Smart_Building_Controller
             this.panel1.Size = new System.Drawing.Size(363, 245);
             this.panel1.TabIndex = 4;
             // 
+            // lbl_notification
+            // 
+            this.lbl_notification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_notification.Location = new System.Drawing.Point(17, 74);
+            this.lbl_notification.Name = "lbl_notification";
+            this.lbl_notification.Size = new System.Drawing.Size(329, 153);
+            this.lbl_notification.TabIndex = 8;
+            // 
             // label1
             // 
             this.label1.BackColor = System.Drawing.Color.Black;
@@ -88,39 +95,11 @@ namespace Smart_Building_Controller
             this.label1.Text = "NOTIFICATION";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(557, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 17);
-            this.label6.TabIndex = 9;
-            this.label6.Text = "label6";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(554, 97);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(46, 17);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "label7";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
-            // 
             // timer1
             // 
             this.timer1.Enabled = true;
             this.timer1.Interval = 2000;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
-            // 
-            // lbl_notification
-            // 
-            this.lbl_notification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_notification.Location = new System.Drawing.Point(17, 74);
-            this.lbl_notification.Name = "lbl_notification";
-            this.lbl_notification.Size = new System.Drawing.Size(329, 153);
-            this.lbl_notification.TabIndex = 8;
             // 
             // roundEdgePanel5
             // 
@@ -401,6 +380,18 @@ namespace Smart_Building_Controller
             this.btn_email_service.Text = "EMAIL SERVICE";
             this.btn_email_service.UseVisualStyleBackColor = true;
             // 
+            // lbl_system_state
+            // 
+            this.lbl_system_state.AutoSize = true;
+            this.lbl_system_state.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_system_state.Font = new System.Drawing.Font("Segoe UI", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_system_state.Location = new System.Drawing.Point(514, 24);
+            this.lbl_system_state.Name = "lbl_system_state";
+            this.lbl_system_state.Size = new System.Drawing.Size(202, 76);
+            this.lbl_system_state.TabIndex = 9;
+            this.lbl_system_state.Text = "System State :\r\nout of hours";
+            this.lbl_system_state.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // BuildingController
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -408,8 +399,7 @@ namespace Smart_Building_Controller
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1163, 703);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.lbl_system_state);
             this.Controls.Add(this.roundEdgePanel5);
             this.Controls.Add(this.roundEdgePanel4);
             this.Controls.Add(this.panel1);
@@ -459,10 +449,9 @@ namespace Smart_Building_Controller
         private New_Created_Tools.ToggleButton tgbtn_fire_drill;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label lbl_notification;
+        private System.Windows.Forms.Label lbl_system_state;
     }
 }
 

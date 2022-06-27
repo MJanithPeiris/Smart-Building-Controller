@@ -41,6 +41,7 @@ namespace Smart_Building_Controller
                 tgbtn_alarm_8.Checked = true;
                 tgbtn_alarm_9.Checked = true;
                 tgbtn_alarm_10.Checked = true;
+                lbl_fire_alarm_status.Text = "FIRM ALARM STATUS : ACTIVE";
             }
             else
             {
@@ -54,7 +55,9 @@ namespace Smart_Building_Controller
                 tgbtn_alarm_8.Checked = false;
                 tgbtn_alarm_9.Checked = false;
                 tgbtn_alarm_10.Checked = false;
+                lbl_fire_alarm_status.Text = "FIRM ALARM STATUS : INACTIVE";
             }
         }
+        
     }
 }

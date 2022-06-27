@@ -67,9 +67,9 @@ namespace Smart_Building_Controller
             this.label2.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(43, 25);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(403, 54);
+            this.label2.Size = new System.Drawing.Size(439, 68);
             this.label2.TabIndex = 1;
-            this.label2.Text = "DOOR CONTROLLER";
+            this.label2.Text = "DOOR MANAGER";
             // 
             // roundEdgePanel2
             // 
@@ -411,7 +411,6 @@ namespace Smart_Building_Controller
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1163, 703);
             this.Controls.Add(this.roundEdgePanel3);
             this.Controls.Add(this.roundEdgePanel2);

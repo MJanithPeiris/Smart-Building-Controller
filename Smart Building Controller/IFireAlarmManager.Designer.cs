@@ -56,8 +56,11 @@ namespace Smart_Building_Controller
             this.label1 = new System.Windows.Forms.Label();
             this.tgbtn_alarm_1 = new Smart_Building_Controller.New_Created_Tools.ToggleButton();
             this.label3 = new System.Windows.Forms.Label();
+            this.roundEdgePanel4 = new Smart_Building_Controller.New_Created_Tools.RoundEdgePanel();
+            this.lbl_fire_alarm_status = new System.Windows.Forms.Label();
             this.roundEdgePanel3.SuspendLayout();
             this.roundEdgePanel2.SuspendLayout();
+            this.roundEdgePanel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -67,9 +70,9 @@ namespace Smart_Building_Controller
             this.label4.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(44, 25);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(500, 54);
+            this.label4.Size = new System.Drawing.Size(585, 68);
             this.label4.TabIndex = 6;
-            this.label4.Text = "FIRE ALARM CONTROLER";
+            this.label4.Text = "FIRE ALARM MANAGER";
             // 
             // roundEdgePanel3
             // 
@@ -93,7 +96,7 @@ namespace Smart_Building_Controller
             this.label11.ForeColor = System.Drawing.Color.White;
             this.label11.Location = new System.Drawing.Point(288, 23);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(161, 28);
+            this.label11.Size = new System.Drawing.Size(129, 22);
             this.label11.TabIndex = 7;
             this.label11.Text = "All Alarms On";
             // 
@@ -119,7 +122,7 @@ namespace Smart_Building_Controller
             this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(61, 23);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(163, 28);
+            this.label12.Size = new System.Drawing.Size(130, 22);
             this.label12.TabIndex = 5;
             this.label12.Text = "All Alarms Off";
             // 
@@ -406,13 +409,38 @@ namespace Smart_Building_Controller
             this.label3.TabIndex = 1;
             this.label3.Text = "Alarm - 1";
             // 
+            // roundEdgePanel4
+            // 
+            this.roundEdgePanel4.BackColor = System.Drawing.Color.Black;
+            this.roundEdgePanel4.BorderColor = System.Drawing.Color.Black;
+            this.roundEdgePanel4.Controls.Add(this.lbl_fire_alarm_status);
+            this.roundEdgePanel4.Location = new System.Drawing.Point(32, 112);
+            this.roundEdgePanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.roundEdgePanel4.Name = "roundEdgePanel4";
+            this.roundEdgePanel4.Radius = 20;
+            this.roundEdgePanel4.Size = new System.Drawing.Size(404, 69);
+            this.roundEdgePanel4.TabIndex = 9;
+            this.roundEdgePanel4.Thickness = 5F;
+            // 
+            // lbl_fire_alarm_status
+            // 
+            this.lbl_fire_alarm_status.AutoSize = true;
+            this.lbl_fire_alarm_status.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_fire_alarm_status.ForeColor = System.Drawing.Color.White;
+            this.lbl_fire_alarm_status.Location = new System.Drawing.Point(7, 18);
+            this.lbl_fire_alarm_status.Name = "lbl_fire_alarm_status";
+            this.lbl_fire_alarm_status.Size = new System.Drawing.Size(371, 32);
+            this.lbl_fire_alarm_status.TabIndex = 5;
+            this.lbl_fire_alarm_status.Text = "FIRM ALARM STATUS : INACTIVE";
+            this.lbl_fire_alarm_status.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // IFireAlarmManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1163, 703);
+            this.Controls.Add(this.roundEdgePanel4);
             this.Controls.Add(this.roundEdgePanel3);
             this.Controls.Add(this.roundEdgePanel2);
             this.Controls.Add(this.label4);
@@ -422,10 +450,13 @@ namespace Smart_Building_Controller
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.roundEdgePanel2, 0);
             this.Controls.SetChildIndex(this.roundEdgePanel3, 0);
+            this.Controls.SetChildIndex(this.roundEdgePanel4, 0);
             this.roundEdgePanel3.ResumeLayout(false);
             this.roundEdgePanel3.PerformLayout();
             this.roundEdgePanel2.ResumeLayout(false);
             this.roundEdgePanel2.PerformLayout();
+            this.roundEdgePanel4.ResumeLayout(false);
+            this.roundEdgePanel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -458,5 +489,7 @@ namespace Smart_Building_Controller
         private System.Windows.Forms.Label label1;
         private New_Created_Tools.ToggleButton tgbtn_alarm_1;
         private System.Windows.Forms.Label label3;
+        private New_Created_Tools.RoundEdgePanel roundEdgePanel4;
+        private System.Windows.Forms.Label lbl_fire_alarm_status;
     }
 }

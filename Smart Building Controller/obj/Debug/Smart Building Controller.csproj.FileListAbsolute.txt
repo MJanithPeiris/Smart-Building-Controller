@@ -102,3 +102,10 @@ D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\Castle.Core.xml
 D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\NSubstitute.xml
 D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\nunit.framework.xml
 D:\Smart-Building-Controller\Smart Building Controller\bin\Debug\System.Threading.Tasks.Extensions.xml
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\Castle.Core.dll
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\NSubstitute.dll
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\System.Threading.Tasks.Extensions.dll
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\Castle.Core.xml
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\NSubstitute.xml
+D:\UCL\Year 02\Software Development CO2401\CO2401 Assignment\Smart-Building-Controller\Smart Building Controller\bin\Debug\System.Threading.Tasks.Extensions.xml
